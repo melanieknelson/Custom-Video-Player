@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Custom Video Player</title>
+	
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<link href="style.css" rel="stylesheet" type="text/css">
+	
+</head>
+
+<body>
+	<div class="container">
+	
+	<div id="oldschool">
+	<img src="OLD-SCHOOL-TV.png" alt="oldtv">
+	</div>
+	
+	<video id="video" src="andy.mp4">
+	<track default src="andy.vtt">
+	</video>
+	
+<div>
+
+	<button id="playButton" onClick="getTime"><i class="fa fa-play"></i></button>
+	<button id="pauseButton"><i class="fa fa-pause"></i></button>
+	<span id="time">0</span> seconds
+	<button id="rewindBoy"><i class="fa fa-fast-backward"></i></button>
+	<button id="fastButton"><i class="fa fa-fast-forward"></i></button>
+	<button id="mute" onClick="enableMute ()"><i class="fa fa-volume-off"></i></button>
+	<button id="mute2" onClick="disableMute ()"><i class="fa fa-volume-down"></i></button>
+
+	</div>
+	</div>
+	
+	<script>
+		
+		var video = document.getElementById ('video');
+		//play
+		function startVideo () {
+			video.play ();
+		}
+		//pause
+		function pauseVideo () {
+			video.pause ();
+		}
+		
+		//time
+		video.ontimeupdate = function ( ) {
+			myFunction ()};
+		function myFunction () {
+			document.getElementById ("time") .innerHTML = video.currentTime;
+		}
+		
+		//fast forward
+		function fastForward () {
+			video.currentTime += 5;
+		}
+		
+		//rewind
+		function rewind () {
+			video.currentTime -= 5;
+		}
+	
+		//mute and unmute
+		
+		function enableMute () {
+			video.muted = true;
+		}
+		
+		function disableMute (){
+			video.muted = false;
+		}
+	
+		
+		
+		//play
+		var playButton = document.getElementById ('playButton');
+		playButton.addEventListener ('click' , startVideo);
+		//pause
+		var pauseButton = document.getElementById ('pauseButton');
+		pauseButton.addEventListener ('click' , pauseVideo);
+		//fastforward
+		var fastButton = document.getElementById ('fastButton');
+		fastButton.addEventListener( 'click' , fastForward);
+		//rewind
+		var rewindBoy = document.getElementById ('rewindBoy');
+		rewindBoy.addEventListener ('click' , rewind);
+		
+		
+
+	</script>
+	
+</body>
+</html>
